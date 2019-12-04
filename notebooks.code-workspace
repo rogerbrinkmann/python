@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "notebooks"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "venv\\Scripts\\python.exe"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "built_in"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "venv\\Scripts\\python.exe"
+	}
+}

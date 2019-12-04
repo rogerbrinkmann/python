@@ -11,4 +11,4 @@ def f(x):
 
 if __name__ == "__main__":
     with Pool(10) as p:
-        print(p.map(f, [10, 10,10]))
+        print(p.map(f, [10, 10, 10]))

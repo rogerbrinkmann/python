@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "pyzmq"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "venv\\Scripts\\python.exe"
+	}
+}

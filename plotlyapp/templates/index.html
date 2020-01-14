@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Plotly Example{% endblock %}
+{% block head %}
+{{ super() }}
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+{% endblock %}
+{% block content %}
+  <h1>Chart</h1>
+  <div id='myDiv'></div>
+{% endblock %}
+
+{% block script %}
+<script src='/static/script.js'></script>
+{% endblock %}

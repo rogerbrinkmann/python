@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "tesseract"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "venv\\Scripts\\python.exe"
+	}
+}

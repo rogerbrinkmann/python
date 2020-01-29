@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "jinja2"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "venv\\Scripts\\python.exe"
+	}
+}

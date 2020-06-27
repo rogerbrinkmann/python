@@ -10,18 +10,23 @@ from http.server import (
 import errno, socket  # for socket exceptions
 import struct
 import threading
+from pathlib import Path
 
 
 host = "localhost"
 port = 8000
 
-with open(r"application\index.html", "r") as html_file:
+cwd = Path(__file__).parent
+home = cwd.joinpath('index.html')
+
+
+with open(home, "r") as html_file:
     html_page = html_file.read()
 
 
 class MyThreadingHTTPServer(ThreadingHTTPServer):
     def service_actions(self):
-        print("action")
+        pass
 
 class WebSocketError(Exception):
     pass
@@ -58,7 +63,12 @@ class HTTPWebsocketRequestHandler(SimpleHTTPRequestHandler):
         self.connected = False
 
     def do_GET(self):
-        # gets called upon get requests
+        """
+        overwritten from SimpleHTTPRequestHandler
+        - handle GET request
+        Either it is a simple request for a webpage, in which case an html page is sent back to the client, 
+        or it is an upgrade-to-websocket request from the html page, in which case the upgrade-handshake is conducted
+        """
         if self.headers.get("Upgrade", None) == "websocket":
             self._handshake()
             self._read_messages()

@@ -28,6 +28,13 @@
         ws.onclose = () => {
             content.appendChild(document.createElement("p")).textContent = "Websocket close";
         }
+
+        var myVar = setInterval(myTimer, 100);
+
+        function myTimer() {
+            var d = new Date();
+            ws.send(d.toLocaleTimeString());
+        }
     </script>
 </body>
 

@@ -15,6 +15,10 @@
         {
             "name": "Test case 4",
             "verdict": "aborted"
+        },
+        {
+            "name": "Test case 5",
+            "verdict": "passed"
         }
     ]
 }

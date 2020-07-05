@@ -1,0 +1,33 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Test Case</th>
+                <th scope="col">Verdict</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for testcase in testcases %}
+
+            {% if testcase.verdict == 'passed' %}
+            <tr class="table-success">
+                {% elif testcase.verdict == 'aborted' %}
+            <tr class="table-warning">
+                {% elif testcase.verdict == 'failed' %}
+            <tr class="table-danger">
+                {% else %}
+            <tr>
+                {% endif %}
+
+                <th scope="row">{{  loop.index  }}</th>
+                <td>{{ testcase.name }}</td>
+                <td>{{ testcase.verdict }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <hr>
+</div>

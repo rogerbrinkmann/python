@@ -1,19 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class="container">
-{% for testcase in testcases %}
-    <div class="row">
-        <div class="col-10 border bg-light">
-            {{ testcase.name }}
-        </div>
-        <div class="col-2 border bg-light">
-            {{ testcase.verdict }}
-        </div>
-    </div>
-{% endfor %}
+<div class="container mt-5">
+    <h1>This is the heading</h1>
+    <p>This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. This is a description. </p>
 </div>
 
+{% include 'testcase-table.html' %}
+
+{% include 'footer.html' %}
 
 {% endblock %}

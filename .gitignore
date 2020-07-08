@@ -2,3 +2,7 @@ venv
 .vscode
 __pycache__
 *.xlsx
+*.suo
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
+/.vs/PythonSettings.json

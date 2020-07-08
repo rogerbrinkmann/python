@@ -9,6 +9,10 @@ class Color:
         return f"{self.name}, {self.code}"
 
     def __lt__(self, other):
+        """ 
+        implement this method to allow sorting 
+        The "meaning" of order (less-then) must be clear    
+        """
         return self.name < other.name
 
 

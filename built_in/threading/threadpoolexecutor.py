@@ -8,12 +8,12 @@ build_id_generator = count(1234, 1)
 ts_build_id_generator = count(4567, 1)
 
 logging.basicConfig(format="%(asctime)s %(message)s", level=logging.INFO)
-log = logging.getLogger(__name__)
 
 
 def await_build():
     # polling the result of the build
     time.sleep(random.random() * 10)
+    return random.choice((True, False))
 
 
 def build_ts(data):
@@ -29,24 +29,27 @@ def start_build(data):
 
 def build_app(data):
 
-    log.info(f"Starting Build for {data['Name']}")
+    logging.info(f"Starting Build for {data['Name']}")
     build_data = start_build(data)
-    log.info(f"Build {data['Name']} with Id {build_data['BuildId']} started.")
-    await_build()
-    log.info(f"Build {data['Name']} completed")
-    log.info(f"Starting TS Build with Parameter {data['Param1']}")
-    return build_ts(data)
+    logging.info(f"Build {data['Name']} with Id {build_data['BuildId']} started.")
+    if await_build():
+        logging.info(f"Build {data['Name']} completed successfully")
+        logging.info(f"Starting TS Build with Parameter {data['Param1']}")
+        return build_ts(data)
+    else:
+        logging.info(f"Build {data['Name']} failed, aborting")
 
 
 
 if __name__ == "__main__":
+
     builds = [
         {"Name": "B1", "Param1": "A"},
         {"Name": "B2", "Param1": "B"},
         {"Name": "B3", "Param1": "C"},
         {"Name": "B4", "Param1": "D"},
         {"Name": "B5", "Param1": "E"},
-    ]
+    ]    
 
     # execute the builds, 
     # max_worker=1 -> all will execute consecutively
@@ -54,8 +57,10 @@ if __name__ == "__main__":
     with ThreadPoolExecutor(max_workers=10) as executor:
         futures = [executor.submit(build_app, data) for data in builds]
 
-        for future in as_completed(futures):
-            log.info(f"Test Suite and auto test running for TS Build Id: {future.result()}" )
+        results = [future.result() for future in as_completed(futures)]
+        for result in results:
+            if result:
+                logging.info(f"Test Suite and auto test running for TS Build Id: {result}" )
 
 
-        log.info("Autotest on all virtual machines started, ...")
+        
